@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import CharactersList from "./pages/CharactersList";
+
+import "antd/dist/antd.css";
+import { Typography, Layout } from "antd";
+
+const { Title } = Typography;
+const { Header, Footer, Content } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Layout style={{ textAlign: "center" }}>
+        <Header style={{ padding: "0 14px", minHeight: 180 }}>
+          <Title style={{ padding: "50px", color: "#fff" }}>
+            Rick & Morty App
+          </Title>
+        </Header>
+        <Layout>
+          <Content>
+            <CharactersList />
+          </Content>
+        </Layout>
+        <Footer>Footer</Footer>
+      </Layout>
+    </>
   );
 }
 
