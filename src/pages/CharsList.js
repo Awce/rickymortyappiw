@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   List,
   Card,
@@ -42,6 +42,12 @@ const CharsList = () => {
     getCharacters(url);
   }, []);
 
+  const history = useHistory();
+
+  const onRegisterButton = () => {
+    history.push("/chars/new");
+  };
+
   return (
     <div
       style={{ paddingLeft: "10px", marginTop: "10px", marginRight: "10px" }}
@@ -51,10 +57,11 @@ const CharsList = () => {
         subTitle={info.count}
         extra={[
           <Button
-            key="1"
+            key={1}
             type="primary"
             size="large"
             shape="round"
+            onClick={onRegisterButton}
             icon={<PlusCircleOutlined />}
           >
             Agregar Personaje
@@ -84,7 +91,7 @@ const CharsList = () => {
               hoverable
               cover={<img alt={item.url} src={item.image} />}
               actions={[
-                <Tooltip title="Detalles">
+                <Tooltip title={`Detalles de ${item.name}`}>
                   <Link to={`/chars/${item.id}`}>
                     <ProfileOutlined key="details" />
                   </Link>
@@ -94,7 +101,7 @@ const CharsList = () => {
                     <EditOutlined key="edit" />
                   </Link>
                 </Tooltip>,
-                <Tooltip title="Borrar">
+                <Tooltip title={`Eliminar a ${item.name}`}>
                   <DeleteOutlined key="delete" />
                 </Tooltip>,
               ]}
