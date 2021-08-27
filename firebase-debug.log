@@ -1,0 +1,100 @@
+[debug] [2021-08-27T04:41:51.825Z] ----------------------------------------------------------------------
+[debug] [2021-08-27T04:41:51.829Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2021-08-27T04:41:51.829Z] CLI Version:   7.6.1
+[debug] [2021-08-27T04:41:51.830Z] Platform:      darwin
+[debug] [2021-08-27T04:41:51.830Z] Node Version:  v14.17.0
+[debug] [2021-08-27T04:41:51.832Z] Time:          Thu Aug 26 2021 23:41:51 GMT-0500 (Central Daylight Time)
+[debug] [2021-08-27T04:41:51.832Z] ----------------------------------------------------------------------
+[debug] [2021-08-27T04:41:51.832Z] 
+[debug] [2021-08-27T04:41:51.949Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-08-27T04:41:51.950Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/awce/Documents/rickymortyappiw
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-08-27T04:44:39.139Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-08-27T04:44:39.140Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-08-27T04:44:39.526Z] <<< HTTP RESPONSE 400
+[debug] [2021-08-27T04:44:39.528Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?pageSize=100  
+ 
+[debug] [2021-08-27T04:44:39.867Z] <<< HTTP RESPONSE 401
+[debug] [2021-08-27T04:44:39.868Z] <<< HTTP RESPONSE BODY
+[debug] [2021-08-27T04:44:39.870Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2021-08-27T04:44:40.143Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at module.exports (/Users/awce/.config/yarn/global/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Request._callback (/Users/awce/.config/yarn/global/node_modules/firebase-tools/lib/api.js:39:35)
+    at Request.self.callback (/Users/awce/.config/yarn/global/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:376:20)
+    at Request.emit (domain.js:470:12)
+    at Request.<anonymous> (/Users/awce/.config/yarn/global/node_modules/request/request.js:1161:10)
+    at Request.emit (events.js:376:20)
+    at Request.emit (domain.js:470:12)
+    at IncomingMessage.<anonymous> (/Users/awce/.config/yarn/global/node_modules/request/request.js:1083:12)
+    at Object.onceWrapper (events.js:482:28)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.
+[debug] [2021-08-27T04:45:44.941Z] ----------------------------------------------------------------------
+[debug] [2021-08-27T04:45:44.945Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2021-08-27T04:45:44.946Z] CLI Version:   7.6.1
+[debug] [2021-08-27T04:45:44.946Z] Platform:      darwin
+[debug] [2021-08-27T04:45:44.946Z] Node Version:  v14.17.0
+[debug] [2021-08-27T04:45:44.948Z] Time:          Thu Aug 26 2021 23:45:44 GMT-0500 (Central Daylight Time)
+[debug] [2021-08-27T04:45:44.948Z] ----------------------------------------------------------------------
+[debug] [2021-08-27T04:45:44.948Z] 
+[debug] [2021-08-27T04:45:45.078Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-08-27T04:45:45.079Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/awce/Documents/rickymortyappiw
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-08-27T04:45:59.866Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-08-27T04:45:59.867Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-08-27T04:46:00.215Z] <<< HTTP RESPONSE 400
+[debug] [2021-08-27T04:46:00.218Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?pageSize=100  
+ 
+[debug] [2021-08-27T04:46:00.494Z] <<< HTTP RESPONSE 401
+[debug] [2021-08-27T04:46:00.495Z] <<< HTTP RESPONSE BODY
+[debug] [2021-08-27T04:46:00.497Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2021-08-27T04:46:00.755Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at module.exports (/Users/awce/.config/yarn/global/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Request._callback (/Users/awce/.config/yarn/global/node_modules/firebase-tools/lib/api.js:39:35)
+    at Request.self.callback (/Users/awce/.config/yarn/global/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:376:20)
+    at Request.emit (domain.js:470:12)
+    at Request.<anonymous> (/Users/awce/.config/yarn/global/node_modules/request/request.js:1161:10)
+    at Request.emit (events.js:376:20)
+    at Request.emit (domain.js:470:12)
+    at IncomingMessage.<anonymous> (/Users/awce/.config/yarn/global/node_modules/request/request.js:1083:12)
+    at Object.onceWrapper (events.js:482:28)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.
