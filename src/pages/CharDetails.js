@@ -8,6 +8,8 @@ const { Meta } = Card;
 
 const CharDetails = (props) => {
   const [character, setCharacter] = useState([]);
+
+  const history = useHistory();
   const id = props.match.params.id;
   const api = "https://rickandmortyapi.com/api/character";
   const url = `${api}/${id}`;
@@ -16,7 +18,6 @@ const CharDetails = (props) => {
     axios
       .get(url)
       .then((response) => {
-        console.log(response.data);
         setCharacter(response.data);
       })
       .catch((err) => {
@@ -26,9 +27,7 @@ const CharDetails = (props) => {
 
   useEffect(() => {
     getCharacter(url);
-  });
-
-  const history = useHistory();
+  }, [url]);
 
   const goBack = () => {
     history.goBack();

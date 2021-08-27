@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
   List,
   Card,
@@ -8,6 +9,9 @@ import {
   Tag,
   PageHeader,
   Button,
+  Modal,
+  message,
+  notification,
 } from "antd";
 import {
   EditOutlined,
@@ -15,22 +19,30 @@ import {
   RightOutlined,
   LeftOutlined,
   ProfileOutlined,
-  EnvironmentOutlined,
+  SmileOutlined,
+  FrownOutlined,
   PlusCircleOutlined,
+  ExclamationCircleOutlined,
 } from "@ant-design/icons";
+import Loading from "../components/Loading";
+
+import { getAllCharactersAction } from "../redux/actions/charsActions";
 
 import axios from "axios";
 
+const { confirm } = Modal;
+
 const CharsList = () => {
-  const [characters, setCharacters] = useState([]);
   const [info, setInfo] = useState({});
   const url = "https://rickandmortyapi.com/api/character";
 
-  const getCharacters = (url) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const getCharactersInfo = (url) => {
     axios
       .get(url)
       .then((response) => {
-        setCharacters(response.data.results);
         setInfo(response.data.info);
       })
       .catch((err) => {
@@ -39,13 +51,51 @@ const CharsList = () => {
   };
 
   useEffect(() => {
-    getCharacters(url);
+    getCharactersInfo(url);
   }, []);
 
-  const history = useHistory();
+  useEffect(() => {
+    const getCharacters = () => dispatch(getAllCharactersAction());
+    getCharacters();
+  }, [dispatch]);
 
   const onRegisterButton = () => {
     history.push("/chars/new");
+  };
+
+  const characters = useSelector((state) => state.characters.characters);
+  const load = useSelector((state) => state.characters.load);
+  const error = useSelector((state) => state.characters.error);
+
+  const errorMessage = () => {
+    message.error("Hubo un error, no hay datos para mostrar.");
+  };
+
+  const showDeleteConfirm = () => {
+    confirm({
+      title: "Estas seguro de eliminar este personaje?",
+      icon: <ExclamationCircleOutlined />,
+      content: "Ten en cuenta que no podrás recuperar el personaje",
+      okText: "Si, eliminar",
+      okType: "danger",
+      cancelText: "No",
+      onOk() {
+        console.log("OK");
+        notification.open({
+          message: "Personaje Eliminado",
+          description: "Se elimino el personaje exitosamente",
+          icon: <SmileOutlined style={{ color: "#52c41a" }} />,
+        });
+      },
+      onCancel() {
+        console.log("Cancelar");
+        notification.open({
+          message: "Uff!!",
+          description: "Por poco y lo eliminas.",
+          icon: <FrownOutlined style={{ color: "#108ee9" }} />,
+        });
+      },
+    });
   };
 
   return (
@@ -82,6 +132,8 @@ const CharsList = () => {
           />,
         ]}
       />
+      {load ? <Loading /> : null}
+      {error ? errorMessage() : null}
       <List
         grid={{ gutter: 16, column: 3 }}
         dataSource={characters}
@@ -92,17 +144,22 @@ const CharsList = () => {
               cover={<img alt={item.url} src={item.image} />}
               actions={[
                 <Tooltip title={`Detalles de ${item.name}`}>
-                  <Link to={`/chars/${item.id}`}>
-                    <ProfileOutlined key="details" />
-                  </Link>
+                  <ProfileOutlined
+                    key="details"
+                    onClick={() => history.push(`/chars/${item.id}`)}
+                  />
                 </Tooltip>,
                 <Tooltip title={`Editar a ${item.name}`}>
-                  <Link to={`/chars/edit/${item.id}`}>
-                    <EditOutlined key="edit" />
-                  </Link>
+                  <EditOutlined
+                    key="edit"
+                    onClick={() => history.push(`/chars/edit/${item.id}`)}
+                  />
                 </Tooltip>,
                 <Tooltip title={`Eliminar a ${item.name}`}>
-                  <DeleteOutlined key="delete" />
+                  <DeleteOutlined
+                    key="delete"
+                    onClick={() => showDeleteConfirm()}
+                  />
                 </Tooltip>,
               ]}
             >
@@ -120,9 +177,6 @@ const CharsList = () => {
                 </Descriptions.Item>
                 <Descriptions.Item label="Especie">
                   {item.species}
-                </Descriptions.Item>
-                <Descriptions.Item label="Última ubicación" span={2}>
-                  <EnvironmentOutlined /> {item.location.name}
                 </Descriptions.Item>
               </Descriptions>
             </Card>
